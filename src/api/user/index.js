@@ -14,9 +14,30 @@ userApi.post('/create', (req, res) => {
   };
 
   userRepo.createUser(user).then(() => {
-    res.status(200).send({
-      message: 'olhasó'
-    });
+    res.status(200).send();
+  });
+});
+
+userApi.post('/login', (req, res) => {
+  const { email, password } = req.body;
+  const notFound = () => {
+    res.status(404).send();
+    return;
+  };
+
+  if (!email || !password) notFound();
+
+  userRepo.getUserLogin(email, password).then(user => {
+    const responseData = {
+      id: user.id_usuario,
+      name: user.nm_pessoa,
+      email: user.ds_email,
+      userType: user.cn_tipo_usuario
+    };
+
+    res.status(200).send(responseData);
+  }).catch(() => {
+    notFound();
   });
 });
 
