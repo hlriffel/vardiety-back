@@ -1,0 +1,33 @@
+'use strict';
+module.exports = {
+  up: (queryInterface, Sequelize) => {
+    return queryInterface.createTable('ComponentNutrients', {
+      id: {
+        allowNull: false,
+        autoIncrement: true,
+        primaryKey: true,
+        type: Sequelize.INTEGER
+      },
+      id_component: {
+        type: Sequelize.INTEGER
+      },
+      id_nutrient: {
+        type: Sequelize.INTEGER
+      },
+      qt_nutrient: {
+        type: Sequelize.DOUBLE
+      },
+      createdAt: {
+        allowNull: false,
+        type: Sequelize.DATE
+      },
+      updatedAt: {
+        allowNull: false,
+        type: Sequelize.DATE
+      }
+    });
+  },
+  down: (queryInterface, Sequelize) => {
+    return queryInterface.dropTable('ComponentNutrients');
+  }
+};

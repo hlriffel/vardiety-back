@@ -1,7 +1,7 @@
 import express from 'express';
 import cors from 'cors';
 
-import userApi from '../api/user';
+import userApi from '../controllers/user.controller';
 
 const router = express.Router();
 
