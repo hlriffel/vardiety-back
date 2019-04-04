@@ -2,8 +2,7 @@
 module.exports = (sequelize, DataTypes) => {
   const Component = sequelize.define('Component', {
     id_category: DataTypes.INTEGER,
-    nm_component: DataTypes.STRING,
-    qt_kcal: DataTypes.DOUBLE
+    nm_component: DataTypes.STRING
   }, {});
 
   Component.associate = function(models) {

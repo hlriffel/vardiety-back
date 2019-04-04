@@ -14,9 +14,6 @@ module.exports = {
       nm_component: {
         type: Sequelize.STRING
       },
-      qt_kcal: {
-        type: Sequelize.DOUBLE
-      },
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE
