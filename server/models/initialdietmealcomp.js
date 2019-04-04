@@ -13,7 +13,7 @@ module.exports = (sequelize, DataTypes) => {
     });
 
     InitialDietMealComp.hasOne(models.Component, {
-      foreignKey: 'id_component',
+      foreignKey: 'id',
       as: 'component'
     });
   };
