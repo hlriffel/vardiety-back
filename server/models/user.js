@@ -7,8 +7,10 @@ module.exports = (sequelize, DataTypes) => {
     ds_salt: DataTypes.STRING,
     cn_user_type: DataTypes.STRING
   }, {});
+
   User.associate = function(models) {
-    // associations can be defined here
+    
   };
+
   return User;
 };

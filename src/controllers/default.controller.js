@@ -10,8 +10,14 @@ export class DefaultController {
     return res.json(record);
   }
 
-  async list(req, res) {
-    const rows = await this.model.findAll();
+  async list(req, res, orderOptions) {
+    let rows;
+
+    if (orderOptions) {
+      rows = await this.model.findAll({ order: orderOptions });
+    } else {
+      rows = await this.model.findAll();
+    }
 
     return res.json(rows);
   }

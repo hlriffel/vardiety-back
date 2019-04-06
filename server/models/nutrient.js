@@ -6,7 +6,7 @@ module.exports = (sequelize, DataTypes) => {
   }, {});
 
   Nutrient.associate = function(models) {
-    Nutrient.hasOne(models.NutrientMeasureUnit, {
+    Nutrient.belongsTo(models.NutrientMeasureUnit, {
       foreignKey: 'id_measure_unit',
       as: 'measureUnit'
     });

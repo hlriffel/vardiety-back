@@ -7,13 +7,14 @@ module.exports = (sequelize, DataTypes) => {
   }, {});
 
   InitialDietMealComp.associate = function(models) {
-    InitialDietMealComp.hasOne(models.InitialDietMeal, {
+    InitialDietMealComp.belongsTo(models.InitialDietMeal, {
       foreignKey: 'id_initial_diet_meal',
       as: 'meal'
     });
 
-    InitialDietMealComp.hasOne(models.Component, {
-      foreignKey: 'id',
+    InitialDietMealComp.belongsTo(models.Component, {
+      foreignKey: 'id_component',
+      targetKey: 'id',
       as: 'component'
     });
   };
