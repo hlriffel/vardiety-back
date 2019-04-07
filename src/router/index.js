@@ -11,7 +11,7 @@ const router = express.Router();
 router.use(cors());
 router.use('/user', userApi);
 router.use('/component', componentApi);
-router.use('/componentCategory', componentCategoryApi);
+router.use('/component-category', componentCategoryApi);
 router.use('/nutrient', nutrientApi);
 
 export default router;
