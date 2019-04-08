@@ -6,15 +6,9 @@ module.exports = (sequelize, DataTypes) => {
   }, {});
 
   Component.associate = function(models) {
-    Component.hasOne(models.ComponentCategory, {
+    Component.belongsTo(models.ComponentCategory, {
       foreignKey: 'id_category',
       as: 'category'
-    });
-
-    Component.belongsToMany(models.Nutrient, {
-      through: 'ComponentNutrient',
-      as: 'nutrients',
-      foreignKey: 'id_component'
     });
   };
 

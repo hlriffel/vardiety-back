@@ -7,7 +7,17 @@ module.exports = (sequelize, DataTypes) => {
   }, {});
 
   ComponentNutrient.associate = function(models) {
-    // associations can be defined here
+    ComponentNutrient.belongsTo(models.Component, {
+      foreignKey: 'id_component',
+      targetKey: 'id',
+      as: 'component'
+    });
+
+    ComponentNutrient.belongsTo(models.Nutrient, {
+      foreignKey: 'id_nutrient',
+      targetKey: 'id',
+      as: 'nutrient'
+    });
   };
 
   return ComponentNutrient;

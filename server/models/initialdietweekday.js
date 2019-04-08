@@ -6,7 +6,7 @@ module.exports = (sequelize, DataTypes) => {
   }, {});
 
   InitialDietWeekDay.associate = function(models) {
-    InitialDietWeekDay.hasOne(models.InitialDiet, {
+    InitialDietWeekDay.belongsTo(models.InitialDiet, {
       foreignKey: 'id_initial_diet',
       as: 'weekDay'
     })

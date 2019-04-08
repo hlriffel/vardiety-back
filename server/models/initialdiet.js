@@ -6,7 +6,7 @@ module.exports = (sequelize, DataTypes) => {
   }, {});
 
   InitialDiet.associate = function(models) {
-    InitialDiet.hasOne(models.Period, {
+    InitialDiet.belongsTo(models.Period, {
       foreignKey: 'id_period',
       as: 'period'
     })
