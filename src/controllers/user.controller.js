@@ -11,6 +11,10 @@ userApi.post('/create', (req, res) => {
   userController.store(req, res);
 });
 
+userApi.get('/', (req, res) => {
+  userController.list(req, res);
+});
+
 userApi.post('/login', async (req, res) => {
   const { email, password } = req.body;
   const notFound = () => {
