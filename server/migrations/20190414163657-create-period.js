@@ -8,6 +8,9 @@ module.exports = {
         primaryKey: true,
         type: Sequelize.INTEGER
       },
+      cd_period: {
+        type: Sequelize.STRING
+      },
       ds_period: {
         type: Sequelize.STRING
       },

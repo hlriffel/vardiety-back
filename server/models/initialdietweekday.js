@@ -2,7 +2,7 @@
 module.exports = (sequelize, DataTypes) => {
   const InitialDietWeekDay = sequelize.define('InitialDietWeekDay', {
     id_initial_diet: DataTypes.INTEGER,
-    cn_week_day: DataTypes.STRING
+    nr_week_day: DataTypes.INTEGER
   }, {});
 
   InitialDietWeekDay.associate = function(models) {

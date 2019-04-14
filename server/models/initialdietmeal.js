@@ -4,8 +4,13 @@ module.exports = (sequelize, DataTypes) => {
     id_initial_diet: DataTypes.INTEGER,
     ds_meal: DataTypes.STRING
   }, {});
+
   InitialDietMeal.associate = function(models) {
-    // associations can be defined here
+    InitialDietMeal.belongsTo(models.InitialDiet, {
+      foreignKey: 'id_initial_diet',
+      as: 'initialDiet'
+    });
   };
+
   return InitialDietMeal;
 };

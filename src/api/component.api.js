@@ -1,6 +1,6 @@
 import express from 'express';
 
-import { DefaultController } from './default.controller';
+import { DefaultController } from '../controllers/default.controller';
 import { Component } from '../../server/models/';
 
 const componentApi = express();
