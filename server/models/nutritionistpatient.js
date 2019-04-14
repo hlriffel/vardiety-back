@@ -1,18 +1,27 @@
 'use strict';
 module.exports = (sequelize, DataTypes) => {
-  const NutritionistPatients = sequelize.define('NutritionistPatients', {
-    id_nutritionist: DataTypes.INTEGER,
-    id_patient: DataTypes.INTEGER
+  const NutritionistPatient = sequelize.define('NutritionistPatient', {
+    id_nutritionist: {
+      type: DataTypes.INTEGER,
+      allowNull: false
+    },
+    id_patient: {
+      type: DataTypes.INTEGER,
+      allowNull: false
+    }
   }, {});
-  NutritionistPatients.associate = function (models) {
-    NutritionistPatients.belongsTo(models.User, {
+
+  NutritionistPatient.associate = function (models) {
+    NutritionistPatient.belongsTo(models.User, {
       foreignKey: 'id_nutritionist',
       as: 'nutritionist'
     });
-    NutritionistPatients.belongsTo(models.User, {
+  
+    NutritionistPatient.belongsTo(models.User, {
       foreignKey: 'id_patient',
       as: 'patient'
     });
   };
-  return NutritionistPatients;
+
+  return NutritionistPatient;
 };

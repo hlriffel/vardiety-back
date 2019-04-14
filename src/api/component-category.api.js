@@ -1,7 +1,7 @@
 import express from 'express';
 
-import { DefaultController } from './default.controller';
-import { ComponentCategory } from '../../server/models/';
+import { DefaultController } from '../controllers/default.controller';
+import { ComponentCategory } from '../../server/models';
 
 const componentCategoryApi = express();
 

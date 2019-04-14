@@ -1,17 +1,18 @@
 'use strict';
 module.exports = {
   up: (queryInterface, Sequelize) => {
-    return queryInterface.createTable('NutritionistPatients', {
+    return queryInterface.createTable('InitialDietWeekDays', {
       id: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      id_nutritionist: {
+      id_initial_diet: {
+        allowNull: false,
         type: Sequelize.INTEGER
       },
-      id_patient: {
+      nr_week_day: {
         type: Sequelize.INTEGER
       },
       createdAt: {
@@ -21,10 +22,10 @@ module.exports = {
       updatedAt: {
         allowNull: false,
         type: Sequelize.DATE
-      },
+      }
     });
-  }, 
+  },
   down: (queryInterface, Sequelize) => {
-    return queryInterface.dropTable('NutritionistPatients');
-  }, 
+    return queryInterface.dropTable('InitialDietWeekDays');
+  }
 };

@@ -1,30 +1,41 @@
-import express from 'express';
+import { NutritionistPatient, User } from '../../server/models';
 
-import { DefaultController } from './default.controller';
-import { NutritionistPatients, User } from '../../server/models';
+class NutritionistPatientController {
 
-const nutritionistPatientApi = express();
+  async create(nutritionistPatient) {
+    return await NutritionistPatient.create(nutritionistPatient);
+  }
 
-const nutritionistPatientController = new DefaultController(NutritionistPatients);
+  async getPatientByEmail(patientEmail) {
+    return await User.findOne({
+      where: {
+        ds_email: patientEmail
+      }
+    });
+  }
 
-nutritionistPatientApi.post('/create', (req, res) => {
-  nutritionistPatientController.store(req, res);
-});
+  async getPatientsByNutritionist(nutritionistId) {
+    return await NutritionistPatient.findAll({
+      where: {
+        id_nutritionist: nutritionistId
+      },
+      include: [
+        { model: User, as: 'patient' },
+        { model: User, as: 'nutritionist' }
+      ]
+    });
+  }
 
-nutritionistPatientApi.get('/:id', async (req, res) => {
-  const nutritionistId = req.params.id;
-  
-  const patients = await NutritionistPatients.findAll({
-    where: {
-      id_nutritionist: nutritionistId
-    },
-    include: [
-      { model: User, as: 'patient' },
-      { model: User, as: 'nutritionist' }
-    ]
-  });
+  async getNutritionistPatientId(nutritionistId, patientId) {
+    return await NutritionistPatient.findOne({
+      where: {
+        id_nutritionist: nutritionistId,
+        id_patient: patientId
+      }
+    });
+  }
+}
 
-  res.status(200).send(patients);
-});
+const nutritionistPatientController = new NutritionistPatientController();
 
-export default nutritionistPatientApi;
+export default nutritionistPatientController;
