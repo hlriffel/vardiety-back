@@ -7,6 +7,7 @@ import componentCategoryApi from '../api/component-category.api';
 import nutrientApi from '../api/nutrient.api';
 import nutritionistPatientApi from '../api/nutritionist-patient.api';
 import initialDietApi from '../api/initial-diet.api';
+import calendarApi from '../api/calendar.api';
 
 const router = express.Router();
 
@@ -17,5 +18,6 @@ router.use('/component-category', componentCategoryApi);
 router.use('/nutrient', nutrientApi);
 router.use('/nutritionist-patient', nutritionistPatientApi);
 router.use('/initial-diet', initialDietApi);
+router.use('/calendar', calendarApi);
 
 export default router;
