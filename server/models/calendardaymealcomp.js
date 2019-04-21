@@ -15,7 +15,8 @@ module.exports = (sequelize, DataTypes) => {
   CalendarDayMealComp.associate = function(models) {
     CalendarDayMealComp.belongsTo(models.CalendarDayMeal, {
       foreignKey: 'id_calendar_day_meal',
-      as: 'calendarDayMeal'
+      as: 'calendarDayMeal',
+      onDelete: 'cascade'
     });
 
     CalendarDayMealComp.belongsTo(models.Component, {

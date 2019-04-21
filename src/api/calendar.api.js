@@ -12,4 +12,12 @@ calendarApi.get('/:nutritionistId/:patientId', async (req, res) => {
   res.status(200).send(calendarData);
 });
 
+calendarApi.delete('/:nutritionistId/:patientId', async (req, res) => {
+  const { nutritionistId, patientId } = req.params;
+  
+  await calendarController.clearCalendar(nutritionistId, patientId);
+
+  res.status(200).send();
+});
+
 export default calendarApi;

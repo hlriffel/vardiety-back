@@ -98,16 +98,22 @@ class CalendarController {
         const items = [];
 
         meal.items.forEach(item => {
-          let iterator = suggestions[item.id].iterator;
-          let suggestedItem = iterator.next().value;
+          const getNextItem = iterator => {
+            let suggestedItem = iterator.next().value;
 
-          if (!suggestedItem) {
-            iterator = suggestions[item.id][Symbol.iterator]();
-            suggestedItem = iterator.next().value;
-          }
+            if (!suggestedItem) {
+              iterator = suggestions[item.id][Symbol.iterator]();
+              suggestedItem = iterator.next().value;
+            }
+
+            return suggestedItem;
+          };
+
+          let iterator = suggestions[item.id].iterator;
+          let suggestedItem = getNextItem(iterator);
 
           while (userRestrictions.includes(suggestedItem.id)) {
-            suggestedItem = iterator.next().value;
+            suggestedItem = getNextItem(iterator);
           }
 
           items.push({
@@ -178,6 +184,16 @@ class CalendarController {
         await CalendarDayMealComp.bulkCreate(itemsData);
       }
     }
+  }
+
+  async clearCalendar(nutritionistId, patientId) {
+    const nutritionistPatient = await nutritionistPatientController.getNutritionistPatientId(nutritionistId, patientId);
+
+    await Calendar.destroy({
+      where: {
+        id_nutritionist_patient: nutritionistPatient.id
+      }
+    });
   }
 }
 
