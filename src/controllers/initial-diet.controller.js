@@ -2,6 +2,7 @@ import { InitialDiet, InitialDietMeal, InitialDietMealComp, InitialDietWeekDay }
 
 import nutritionistPatientController from './nutritionist-patient.controller';
 import periodController from './period.controller';
+import calendarController from './calendar/calendar.controller';
 
 class InitialDietController {
 
@@ -43,6 +44,16 @@ class InitialDietController {
       });
 
       await InitialDietMealComp.bulkCreate(mealItemsData);
+    });
+
+    await calendarController.generateNewCalendar({
+      id: initialDiet.id,
+      nutritionistId,
+      patientId,
+      nutritionistPatientId: nutritionistPatient.id,
+      meals,
+      periodCode: periods.period,
+      weekDays
     });
   }
 }
