@@ -1,4 +1,4 @@
-import { User, UserRestriction, Component } from '../../server/models';
+import { User, UserRestriction, Component } from '../server/models';
 
 class UserController {
 

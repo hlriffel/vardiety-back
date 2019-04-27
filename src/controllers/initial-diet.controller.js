@@ -1,4 +1,4 @@
-import { InitialDiet, InitialDietMeal, InitialDietMealComp, InitialDietWeekDay } from '../../server/models';
+import { InitialDiet, InitialDietMeal, InitialDietMealComp, InitialDietWeekDay } from '../server/models';
 
 import nutritionistPatientController from './nutritionist-patient.controller';
 import periodController from './period.controller';

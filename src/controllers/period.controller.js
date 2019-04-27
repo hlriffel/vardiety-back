@@ -1,4 +1,4 @@
-import { Period } from '../../server/models';
+import { Period } from '../server/models';
 
 class PeriodController {
 

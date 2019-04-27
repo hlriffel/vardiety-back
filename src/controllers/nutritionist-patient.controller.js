@@ -1,4 +1,4 @@
-import { NutritionistPatient, User } from '../../server/models';
+import { NutritionistPatient, User } from '../server/models';
 
 class NutritionistPatientController {
 

@@ -4,8 +4,11 @@
   "description": "",
   "main": "app.js",
   "scripts": {
-    "start": "node_modules/.bin/nodemon app.js --exec babel-node --",
-    "debug": "node_modules/.bin/nodemon --inspect app.js --exec babel-node --"
+    "clean": "rm -rf dist && mkdir dist",
+    "build-babel": "babel ./src --out-dir dist --ignore ./src/server/migrations",
+    "build": "npm run clean && npm run build-babel",
+    "start": "node dist/app.js",
+    "debug": "node_modules/.bin/nodemon --inspect src/app.js --exec babel-node --"
   },
   "author": "",
   "license": "ISC",

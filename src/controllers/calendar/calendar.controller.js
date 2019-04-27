@@ -6,7 +6,7 @@ import {
   CalendarDayMeal,
   CalendarDayMealComp,
   Component
-} from '../../../server/models';
+} from '../../server/models';
 
 import { SuggestionArray } from './suggestion-array';
 import calendarConstants from './calendar.constants';

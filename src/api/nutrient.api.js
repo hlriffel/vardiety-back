@@ -1,7 +1,7 @@
 import express from 'express';
 
 import { DefaultController } from '../controllers/default.controller';
-import { Nutrient } from '../../server/models';
+import { Nutrient } from '../server/models';
 
 const nutrientApi = express();
 
