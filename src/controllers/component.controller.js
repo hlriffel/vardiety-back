@@ -1,4 +1,4 @@
-import { Component } from '../../server/models';
+import { Component } from '../server/models';
 
 class ComponentController {
 
