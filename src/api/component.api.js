@@ -1,6 +1,6 @@
 import express from 'express';
 
-import { Component } from '../server/models';
+import { Component, ComponentCategory, Category } from '../server/models';
 
 import { DefaultController } from '../controllers/default.controller';
 
@@ -22,7 +22,14 @@ componentApi.post('/create', async (req, res) => {
 });
 
 componentApi.get('/', (req, res) => {
-  componentControllerDefault.list(req, res, ['nm_component']);
+  componentControllerDefault.list(req, res, {
+    order: ['nm_component']/*,
+    include: [
+      { model: ComponentCategory, as: 'componentCategory', include: [
+        { model: Category, as: 'category', attributes: ['nm_category'] }
+      ] }
+    ]*/
+  });
 });
 
 export default componentApi;
