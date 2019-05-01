@@ -23,6 +23,12 @@ class CalendarController {
       where: {
         id_nutritionist_patient: nutritionistPatient.id
       },
+      order: [
+        [
+          { model: CalendarDay, as: 'days' },
+          { model: CalendarDayMeal, as: 'meals' }, 'id', 'asc'
+        ]
+      ],
       include: [
         {
           model: CalendarDay,
@@ -118,7 +124,7 @@ class CalendarController {
 
           items.push({
             id: suggestedItem.id,
-            amount: suggestedItem.qt_grams
+            amount: suggestedItem.qt_grams_ratio * item.amount
           })
         });
 
