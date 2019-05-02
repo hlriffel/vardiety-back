@@ -10,11 +10,11 @@ export class DefaultController {
     return res.json(record);
   }
 
-  async list(req, res, orderOptions) {
+  async list(req, res, options) {
     let rows;
 
-    if (orderOptions) {
-      rows = await this.model.findAll({ order: orderOptions });
+    if (options) {
+      rows = await this.model.findAll(options);
     } else {
       rows = await this.model.findAll();
     }
