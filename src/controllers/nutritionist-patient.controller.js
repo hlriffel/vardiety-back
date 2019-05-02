@@ -14,6 +14,14 @@ class NutritionistPatientController {
     });
   }
 
+  async deleteListPatient(idRegister) {
+    return await NutritionistPatient.destroy({
+      where: {
+        id: idRegister
+      }
+    });
+  }
+  
   async getPatientsByNutritionist(nutritionistId) {
     return await NutritionistPatient.findAll({
       where: {
