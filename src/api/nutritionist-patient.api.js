@@ -1,6 +1,7 @@
 import express from 'express';
 
 import nutritionistPatientController from '../controllers/nutritionist-patient.controller';
+import nutrientApi from '../api/nutrient.api';
 
 const nutritionistPatientApi = express();
 
@@ -12,6 +13,15 @@ nutritionistPatientApi.post('/create', async (req, res) => {
     id_nutritionist: nutritionistId,
     id_patient: patient.id
   });
+
+  res.status(200).send();
+});
+
+nutrientApi.post('/create', async (req, res) => {
+  const idRegister = req.params.id;
+
+  NutritionistPatientController.deleteListPatient(idRegister);
+  NutritionistPatientController.create(nutritionistPatient);
 
   res.status(200).send();
 });
