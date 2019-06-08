@@ -26,4 +26,12 @@ componentNutrientApi.get('/', (req, res) => {
   componentNutrientControllerDefault.list(req, res)
 });
 
+componentNutrientApi.get('/:id', async (req, res) => {
+  
+  const componentId = req.params.id;
+  const nutrients = await componentNutrientController.getNutrientByComponent(componentId);
+
+  res.status(200).send(nutrients);
+});
+
 export default componentNutrientApi;

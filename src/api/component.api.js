@@ -21,6 +21,17 @@ componentApi.post('/create', async (req, res) => {
   res.status(200).send();
 });
 
+componentApi.delete('/:id', async (req, res) => {
+  try {
+    const componentId = req.params.id;
+    const component = await componentController.deleteComponent(componentId);
+
+    res.status(200).send(component);
+  } catch (ex) {
+    console.log(ex); 
+  }
+});
+
 componentApi.get('/', (req, res) => {
   componentControllerDefault.list(req, res, {
     order: ['nm_component']/*,
