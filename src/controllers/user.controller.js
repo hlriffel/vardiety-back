@@ -40,6 +40,35 @@ class UserController {
   async addUserRestrictions(restrictions) {
     return await UserRestriction.bulkCreate(restrictions);
   }
+
+  async googleLogin(googleInfo) {
+    const googleUser = await this.getUserByEmail(googleInfo.email);
+    
+    if (googleUser) {
+      return googleUser;
+    } else {
+      return await this.createGoogleUser(googleInfo);
+    }
+  }
+
+  async getUserByEmail(email) {
+    return await User.findOne({
+      where: {
+        ds_email: email
+      }
+    });
+  }
+
+  async createGoogleUser(googleInfo) {
+    const user = {
+      nm_person: googleInfo.name,
+      ds_email: googleInfo.email,
+      ds_password: '',
+      cn_user_type: 'PAC'
+    };
+
+    return await this.create(user);
+  }
 }
 
 const userController = new UserController();
