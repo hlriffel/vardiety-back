@@ -34,12 +34,10 @@ componentApi.delete('/:id', async (req, res) => {
 
 componentApi.get('/', (req, res) => {
   componentControllerDefault.list(req, res, {
-    order: ['nm_component']/*,
+    order: ['nm_component'],
     include: [
-      { model: ComponentCategory, as: 'componentCategory', include: [
-        { model: Category, as: 'category', attributes: ['nm_category'] }
-      ] }
-    ]*/
+      { model: ComponentCategory, as: 'category'}
+    ]
   });
 });
 

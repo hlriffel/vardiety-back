@@ -1,4 +1,4 @@
-import { ComponentNutrient } from '../server/models';
+import { Component, Nutrient, ComponentNutrient } from '../server/models';
 
 class ComponentNutrientController {
 
@@ -7,15 +7,16 @@ class ComponentNutrientController {
   }
 
   async getNutrientByComponent(componentId) {
-    try {
-      return await ComponentNutrient.findAll({
-        where: {
-          id_component: componentId
-        }
-      });
-    } catch (ex) {
-      console.log(ex);
-    }
+    return await ComponentNutrient.findAll({
+      where: {
+        id_component: componentId
+      },
+      attributes: ['id', 'id_component', 'id_nutrient', 'qt_nutrient', 'createdAt', 'updatedAt'],
+      include: [
+        { model: Component, as: 'component' },
+        { model: Nutrient, as: 'nutrient' }
+      ]
+    });
   }
 }
 
