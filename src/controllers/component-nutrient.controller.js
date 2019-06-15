@@ -3,7 +3,11 @@ import { Component, Nutrient, ComponentNutrient } from '../server/models';
 class ComponentNutrientController {
 
   async create(componentNutrient) {
-    return await ComponentNutrient.create(componentNutrient);
+    try {
+      return await ComponentNutrient.create(componentNutrient);
+    } catch (ex) {
+      console.log(ex);
+    }
   }
 
   async getNutrientByComponent(componentId) {
@@ -17,6 +21,18 @@ class ComponentNutrientController {
         { model: Nutrient, as: 'nutrient' }
       ]
     });
+  }
+
+  async deleteNutrient(nutrientId) {
+    try {
+      return await ComponentNutrient.destroy({
+        where: {
+          id: nutrientId
+        }
+      });
+    } catch (ex) {
+      console.log(ex);
+    }
   }
 }
 
