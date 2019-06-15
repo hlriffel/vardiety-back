@@ -5,11 +5,15 @@ import userController from '../controllers/user.controller';
 const userApi = express();
 
 userApi.post('/create', async (req, res) => {
-  const user = req.body;
-  
-  await userController.create(user);
+  const userData = req.body;
+  const user = await userController.getUserByEmail(userData.ds_email);
 
-  res.status(200).send();
+  if (user) {
+    res.status(500).send();
+  } else {
+    await userController.create(userData);
+    res.status(200).send();
+  }
 });
 
 userApi.post('/login', async (req, res) => {
@@ -53,5 +57,18 @@ userApi.post('/:id/restrictions', async (req, res) => {
 
   res.status(200).send();
 });
+
+userApi.post('/google-login', async (req, res) => {
+  const googleInfo = req.body;
+  const googleUser = await userController.googleLogin(googleInfo);
+  const data = {
+    id: googleUser.id,
+    name: googleUser.nm_person,
+    email: googleUser.ds_email,
+    userType: googleUser.cn_user_type
+  }
+
+  res.status(200).send(data);
+})
 
 export default userApi;
