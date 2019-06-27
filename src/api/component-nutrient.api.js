@@ -39,7 +39,7 @@ componentNutrientApi.delete('/:id', async (req, res) => {
     const nutrientId = req.params.id;
     const nutrient = await componentNutrientController.deleteNutrient(nutrientId);
 
-    res.status(200).send(nutrient);
+    res.status(200).sendStatus(nutrient);
   } catch (ex) {
     console.log(ex); 
   }
