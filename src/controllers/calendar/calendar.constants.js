@@ -10,7 +10,7 @@ const calendarConstants = {
     )
     SELECT	TO_CHAR(DT_CALENDAR, 'YYYY-MM-DD') AS DT_CALENDAR
     FROM	CALENDAR
-    WHERE	EXTRACT (ISODOW FROM DT_CALENDAR) = ANY (STRING_TO_ARRAY(:week_days, ',')::NUMERIC[])
+    WHERE	EXTRACT (DOW FROM DT_CALENDAR) = ANY (STRING_TO_ARRAY(:week_days, ',')::NUMERIC[])
   `
 };
 
